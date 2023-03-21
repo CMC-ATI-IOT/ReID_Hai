@@ -57,4 +57,10 @@ else:
 
 wandb.init(project = "ReID_Hai", entity = "ai-iot", config=configs, name = "RepVGG_B3g4_8data 1")
 ```
+```
+        log_dict["Rank-1 - " + dataset_name] = results_i['Rank-1']
+        log_dict["mAP - " + dataset_name] = results_i['mAP']
+
+wandb.log(log_dict)
+ ```
 
