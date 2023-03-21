@@ -1,0 +1,25 @@
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    WITH_IBN: True
+
+DATASETS:
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+
+SOLVER:  
+  MAX_EPOCH: 70
+  IMS_PER_BATCH: 256
+  CHECKPOINT_PERIOD: 5
+
+INPUT:
+  SIZE_TRAIN: [ 256, 128 ]
+  SIZE_TEST: [ 256, 128 ]
+
+TEST:
+  IMS_PER_BATCH: 256
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/sbs_R50-ibn_8data_ep70_batch256_fullbody_256x128

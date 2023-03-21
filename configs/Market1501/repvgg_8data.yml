@@ -1,0 +1,24 @@
+_BASE_: ../Base-bagtricks.yml
+
+DATASETS:
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+  COMBINEALL: False
+
+# DATASETS:
+#   # NAMES: ("MSMT17",)
+#   NAMES: ("Market1501","CUHK01",)
+#   TESTS: ("Market1501","CUHK01",)
+#   COMBINEALL: False
+
+SOLVER:  
+  MAX_EPOCH: 150
+  IMS_PER_BATCH: 64
+  CHECKPOINT_PERIOD: 10
+
+TEST:
+  IMS_PER_BATCH: 64
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/repvgg_8data

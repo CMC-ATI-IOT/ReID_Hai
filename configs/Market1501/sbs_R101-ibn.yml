@@ -1,0 +1,12 @@
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    DEPTH: 101x
+    WITH_IBN: True
+
+DATASETS:
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+
+OUTPUT_DIR: logs/market1501/sbs_R101-ibn

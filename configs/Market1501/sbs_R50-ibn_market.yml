@@ -1,0 +1,22 @@
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    WITH_IBN: True
+
+DATASETS:
+  NAMES: ("Market1501",)
+  TESTS: ("Market1501",)
+
+SOLVER:  
+  MAX_EPOCH: 60
+  IMS_PER_BATCH: 256
+  CHECKPOINT_PERIOD: 5
+
+
+TEST:
+  IMS_PER_BATCH: 256
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/sbs_R50-ibn_market

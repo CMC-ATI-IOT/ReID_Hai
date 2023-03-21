@@ -1,0 +1,21 @@
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    WITH_IBN: True
+  WEIGHTS: /home/thangnv/fast-reid/logs/sbs_R50-ibn_8data_ep60_batch256/model_final.pth
+DATASETS:
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+
+SOLVER:  
+  MAX_EPOCH: 60
+  IMS_PER_BATCH: 256
+  CHECKPOINT_PERIOD: 5
+
+TEST:
+  IMS_PER_BATCH: 256
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/sbs_R50-ibn_8data_ep80_batch256_fullbody_partial

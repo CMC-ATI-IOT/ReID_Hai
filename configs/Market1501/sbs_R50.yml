@@ -1,0 +1,20 @@
+_BASE_: ../Base-SBS.yml
+MODEL:
+  WEIGHTS: /home/thangnv/fast-reid/logs/pretrained/market_sbs_R50.pth
+DATASETS:
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+  
+  COMBINEALL: True
+
+SOLVER:  
+  MAX_EPOCH: 60
+  IMS_PER_BATCH: 256
+  CHECKPOINT_PERIOD: 5
+
+TEST:
+  IMS_PER_BATCH: 256
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/market1501/sbs_R50/R50_mar_cu1_2_3_pku_mars_duk_msmt17

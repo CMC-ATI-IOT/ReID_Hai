@@ -1,0 +1,16 @@
+
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    NAME: build_resnest_backbone
+
+  LOSSES:
+    NAME: ("TripletLoss",)
+
+DATASETS:
+  NAMES: ("Market1501",)
+  TESTS: ("Market1501",)
+
+
+OUTPUT_DIR: mgn_R50-ibn_8data_fullbody_batch64_triplet

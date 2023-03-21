@@ -1,0 +1,25 @@
+_BASE_: ../Base-SBS.yml
+
+MODEL:
+  BACKBONE:
+    NAME: build_resnest_backbone
+  
+
+DATASETS:
+  # NAMES: ("MSMT17",)
+  NAMES: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17")
+  TESTS: ("Market1501","CUHK01","CUHK02","CUHK03","PKU","MARS","DukeMTMC","MSMT17","PartialREID","OccludedREID","PartialiLIDS")
+  COMBINEALL: true
+  # TESTS: ("PartialREID","OccludedREID","PartialiLIDS")
+
+SOLVER:  
+  MAX_EPOCH: 60
+  IMS_PER_BATCH: 128 # 128
+  CHECKPOINT_PERIOD: 5
+
+TEST:
+  IMS_PER_BATCH: 128 # 128
+  RERANK:
+    ENABLED: False
+
+OUTPUT_DIR: logs/8data_fullbody_partial_ep60_batch128_combineall
