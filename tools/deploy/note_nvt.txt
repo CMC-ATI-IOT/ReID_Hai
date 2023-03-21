@@ -1,0 +1,16 @@
+// export onnx 
+python tools/deploy/onnx_export.py --config-file /home/thangnv/fast-reid/configs/Market1501/sbs_R50-ibn_test.yml --name market_sbs_R50-ibn_pretraiend --output outputs/onnx_model 
+
+// export trt
+python trt_export.py --name baseline_R50 --output outputs/trt_model \
+    --mode fp32 --batch-size 1 --height 384 --width 128 \
+    --onnx-model /home/thangnv/fast-reid/output/onnx_model/ma_cu1_2_3_pku_mars_duk_msmt_ep60_batch256.onnx
+
+//infer 
+python trt_inference.py --model-path /home/thangnv/fast-reid/outputs/trt_model/ma_cu1_2_3_pku_mars_duk_msmt_ep60_batch256.engine \
+    --input test_data/*.jpg --batch-size 1 --height 384 --width 128 --output trt_output
+
+//compare output beetwen pth vs onnx in onnx_inference
+//compare output beetwen onnx vs trt in trt_inference
+python tools/deploy/trt_inference.py --model-path /home/thangnv/fast-reid/outputs/trt_model/ma_cu1_2_3_pku_mars_duk_msmt_ep60_batch256.engine     --input /home/thangnv/fast-reid/demo/mct/1/192.168.1.6_2_13.jpg --batch-size 1 --height 384 --width 128 --output trt_output
+python tools/deploy/trt_inference.py --model-path /home/thangnv/fast-reid/outputs/trtexe/ma_cu1_2_3_pku_mars_duk_msmt_ep60_batch256.engine     --input /home/thangnv/fast-reid/demo/mct/1/192.168.1.6_2_13.jpg --batch-size 1 --height 384 --width 128 --output trt_output

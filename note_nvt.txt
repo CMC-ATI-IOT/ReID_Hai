@@ -1,0 +1,17 @@
+// export onnx
+python tools/deploy/onnx_export.py --config-file /media/iot-xeon/hdd8tb/fast-reid/configs/Market1501/sbs_S50.yml  --name baseline_S50 --output outputs/onnx_model --opts MODEL.WEIGHTS /media/iot-xeon/hdd8tb/fast-reid/logs/market1501/all_affine_cj/model_final.pth
+python tools/deploy/onnx_export.py --config-file /home/thangnv/fast-reid/configs/Market1501/sbs_S50_onnx.yml  --name 8data_fullbody_partial_ep60_batch256 --output outputs/onnx_model --opts MODEL.WEIGHTS /home/thangnv/fast-reid/logs/8data_fullbody_partial_ep60_batch256/model_final.pth
+
+// evaluate
+python3 tools/train_net.py --config-file ./configs/Market1501/sbs_S50.yml --eval-only MODEL.WEIGHTS /home/thangnv/fast-reid/logs/8data_fullbody_partial_ep80_batch256/model_final.pth MODEL.DEVICE "cuda:0"
+
+python tools/train_net.py --config-file configs/Market1501/mgn_R50-ibn_circle.yml 
+python tools/train_net.py --config-file configs/Market1501/mgn_R50-ibn.yml 
+
+// Ngô Minh Hải
+// Train 
+python models/train.py --config-file configs/Market1501/mgn_R50-ibn.yml 
+python3 train.py --config-file ./configs/Market1501/repvgg.yml MODEL.DEVICE "cuda:0"
+Thay đổi file default: pretrain_path (/home/tuantran/AI_TEAM/REID_HAI/fastreid/config/defaults.py), _C.OUTPUT_DIR
+Base_bagtricks.yml
+File để lưu weights: fastreid/utils/checkpoint.py
