@@ -24,8 +24,19 @@ _C.MODEL.BACKBONE.PRETRAIN_PATH = '/home/tuantran/.cache/torch/hub/checkpoints/R
 
 Training trên 8 bộ dataset, backbone RepVGG B3g4:
 ```
-python3 train.py --config-file ./configs/Market1501/repvgg.yml MODEL.DEVICE "cuda:0"
+python3 train.py --config-file ./configs/Market1501/repvgg_8data.yml MODEL.DEVICE "cuda:0"
 ```
+TRong trường hợp bạn muốn train trên 4 GPUs:
+```
+python3 train.py --config-file ./configs/Market1501/repvgg_8data.yml --num-gpus 4
+```
+
+
+## Testing
+```
+python3 train.py --config-file ./configs/Market1501/repvgg_8data.yml --eval-only MODEL.WEIGHTS /path/to/checkpoint_file MODEL.DEVICE "cuda:0"
+```
+Weights được lưu tại folder logs
 
 ## Wandb
 Tại file train.py, thay đổi các thông tin model mà bạn muốn log ra:
