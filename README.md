@@ -1,3 +1,8 @@
+## Installation
+```
+pip install -r ./docs/requirements.txt
+```
+
 ## Training
 Chọn file config tương ứng với backbone mà bạn muốn dùng tại đường dẫn /configs/Market1501/
 
